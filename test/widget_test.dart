@@ -1,0 +1,1 @@
+import 'package:flutter_test/flutter_test.dart';import 'package:mis_recordatorios/main.dart';void main(){testWidgets('muestra el nombre de la aplicacion', (tester)async{await tester.pumpWidget(const MisRecordatoriosApp());expect(find.text('Mis Recordatorios'),findsOneWidget);});}
