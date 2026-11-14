@@ -1,0 +1,28 @@
+name: Flutter Android CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/flutter-ci.yml']
+permissions: { contents: read }
+concurrency: { group: flutter-ci, cancel-in-progress: true }
+jobs:
+  build-test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with: { channel: stable }
+      - name: Generar scaffolding Android estándar si aún no existe
+        run: flutter create --platforms=android --project-name mis_recordatorios .
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+      - run: flutter build apk --debug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mis-recordatorios-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+          retention-days: 1
+      - run: echo FLUTTER_MOBILE_OK
