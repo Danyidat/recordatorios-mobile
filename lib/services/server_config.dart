@@ -1,0 +1,2 @@
+import 'package:shared_preferences/shared_preferences.dart';
+class ServerConfig { static const _key='api_base_url'; static const defaultUrl='http://10.0.2.2:3000'; static Future<String> getUrl() async {final p=await SharedPreferences.getInstance();return p.getString(_key)??defaultUrl;} static Future<void> save(String value) async {final p=await SharedPreferences.getInstance();await p.setString(_key,value.trim().replaceAll(RegExp(r'/+$'),''));}}
