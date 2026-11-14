@@ -15,7 +15,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with: { channel: stable }
       - name: Generar scaffolding Android estándar si aún no existe
-        run: flutter create --platforms=android --project-name mis_recordatorios .
+        run: flutter create --overwrite --platforms=android --project-name mis_recordatorios .
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
