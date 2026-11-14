@@ -1,0 +1,3 @@
+import 'package:flutter/material.dart';import 'screens/home_screen.dart';
+void main()=>runApp(const MisRecordatoriosApp());
+class MisRecordatoriosApp extends StatelessWidget{const MisRecordatoriosApp({super.key});@override Widget build(BuildContext context)=>MaterialApp(title:'Mis Recordatorios',debugShowCheckedModeBanner:false,theme:ThemeData(colorScheme:ColorScheme.fromSeed(seedColor:const Color(0xFF4169E1)),useMaterial3:true),home:const HomeScreen());}
